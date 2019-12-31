@@ -1,0 +1,132 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+
+import React, {Component} from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+  Image,
+  FlatList,
+} from 'react-native';
+
+import {
+  LearnMoreLinks,
+  Colors,
+  DebugInstructions,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+
+import Header from './component/header';
+
+import Thumbnail from './component/thumbail';
+
+import List from './component/list-item';
+
+export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.item = [
+      {
+        key: '1',
+        urlToImage: '/amit/Documents/NewsAppv2/img/image1.jpg',
+        title: 'TITLE 1',
+        description: 'descrioptin of first',
+        source: 'bbc',
+      },
+      /*{
+        key: '2',
+        urlToImage: '/home/amit/Documents/NewsAppv2/img/image3.jpeg',
+        title: 'TITLE 2',
+        description: 'descrioptin of second',
+        source: 'bbc',
+      },
+      {
+        key: '3',
+        urlToImage: '/home/amit/Documents/NewsAppv2/img/image2.jpeg',
+        title: 'TITLE 1',
+        description: 'descrioptin of first',
+        source: 'bbc',
+      },
+      {
+        key: '4',
+        urlToImage: '/home/amit/Documents/NewsAppv2/img/image3.jpeg',
+        title: 'TITLE 2',
+        description: 'descrioptin of second',
+        source: 'bbc',
+      },
+      {
+        key: '5',
+        urlToImage: '/home/amit/Documents/NewsAppv2/img/image1.jpg',
+        title: 'TITLE 1',
+        description: 'descrioptin of first',
+        source: 'bbc',
+      },
+      {
+        key: '6',
+        urlToImage: '/home/amit/Documents/NewsAppv2/img/image3.jpeg',
+        title: 'TITLE 2',
+        description: 'descrioptin of second',
+        source: 'bbc',
+      },
+      {
+        key: '7',
+        urlToImage: '/home/amit/Documents/NewsAppv2/img/image2.jpeg',
+        title: 'TITLE 1',
+        description: 'descrioptin of first',
+        source: 'bbc',
+      },
+      {
+        key: '8',
+        urlToImage: '/home/amit/Documents/NewsAppv2/img/image1.jpg',
+        title: 'TITLE 2',
+        description: 'descrioptin of second',
+        source: 'bbc',
+      },*/
+    ];
+  }
+  render() {
+    return (
+      <View style={{flex: 1}}>
+        <Header />
+        <ScrollView>
+          <View style={style.body}>
+            <FlatList
+              data={this.item}
+              renderItem={item => <List dataArray={item} />}></FlatList>
+          </View>
+        </ScrollView>
+      </View>
+    );
+  }
+}
+const style = StyleSheet.create({
+  fl: {flex: 1},
+  body: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    borderRadius: 10,
+  },
+  thumbnail: {
+    height: 80,
+    width: 80,
+    margin: 20,
+    borderRadius: 5,
+  },
+  title: {
+    padding: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 30,
+  },
+});
+export default App;
