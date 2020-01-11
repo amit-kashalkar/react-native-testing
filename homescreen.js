@@ -19,13 +19,13 @@ import {
   Button,
 } from 'react-native';
 
+import HorScroll from '/home/amit/Documents/NewsAppFinal/component/hor_scroll.js';
+
 import Webview from 'react-native-webview';
 
 import Header from '/home/amit/Documents/NewsAppFinal/component/header.js';
 
 import Bottom1 from '/home/amit/Documents/NewsAppFinal/component/bottom';
-
-//import Thumbnail from './component/thumbail';
 
 import List from '/home/amit/Documents/NewsAppFinal/component/list-item';
 
@@ -43,22 +43,26 @@ export class HomeScreen extends Component {
 
     this.state = {
       isLoading: true,
+
       data: null,
+
       isError: false,
     };
+
     formatwait = () => {
       this.setState({
         isLoading: true,
       });
     };
     formatdata = props => {
-      this.setState({
-        isLoading: false,
-        data: props,
-      });
-      console.log('inside formatdata');
-      console.log(this.state.data);
+      if (1) {
+        this.setState({
+          isLoading: false,
+          data: props,
+        });
+      }
     };
+
     b = formatdata;
     c = formatwait;
   }
@@ -66,7 +70,6 @@ export class HomeScreen extends Component {
   componentDidMount() {
     getArticles('general').then(
       data => {
-        console.log('before formatdata');
         formatdata(data);
       },
       error => Alert.alert(JSON.stringify(error)),
@@ -92,42 +95,27 @@ export class HomeScreen extends Component {
           )}></FlatList>
       </View>
     );
+
     return (
       <View style={{flex: 1}}>
-        <Header />
-
-        <ScrollView>{view}</ScrollView>
-
         <Bottom1 />
+
+        <ScrollView>
+          <HorScroll />
+        </ScrollView>
+        <ScrollView>{view}</ScrollView>
       </View>
     );
   }
 }
 
 const style = StyleSheet.create({
-  bottom: {
-    margin: 19,
-    backgroundColor: 'cornflowerblue',
-    borderRadius: 40,
-  },
   fl: {flex: 1},
   body: {
     flex: 1,
     backgroundColor: 'transparent',
     borderRadius: 10,
-  },
-  thumbnail: {
-    height: 80,
-    width: 80,
-    margin: 20,
-    borderRadius: 5,
-  },
-  title: {
-    padding: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#fff',
-    fontSize: 20,
+    height: 200,
   },
 });
 export default HomeScreen;
